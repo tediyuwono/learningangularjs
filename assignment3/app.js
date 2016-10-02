@@ -54,9 +54,11 @@ function MenuSearchService($http, ApiBasePath) {
             // process result and only keep items that match
             var foundItems = []
 
-            for (var index in result.data.menu_items) {
-              if (result.data.menu_items[index].description.indexOf(searchTerm) != -1) {
-                foundItems.push(result.data.menu_items[index]);
+            if (searchTerm !== "") {
+              for (var index in result.data.menu_items) {
+                if (result.data.menu_items[index].description.indexOf(searchTerm) != -1) {
+                  foundItems.push(result.data.menu_items[index]);
+                }
               }
             }
 
