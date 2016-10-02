@@ -30,7 +30,7 @@ function NarrowItDownController(MenuSearchService) {
   menu.getMatchedMenuItems = function () {
     var promise = MenuSearchService.getMatchedMenuItems(menu.searchTerm);
     promise.then(function (result) {
-      menu.found = result.data.menu_items;
+      menu.found = result;
       console.log(menu.found);
     });
   };
@@ -63,8 +63,7 @@ function MenuSearchService($http, ApiBasePath) {
             }
 
             // return processed items
-            result.data.menu_items = foundItems;
-            return result;
+            return foundItems;
           });
   };
 
